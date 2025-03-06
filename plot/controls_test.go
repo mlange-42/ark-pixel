@@ -30,13 +30,13 @@ func ExampleControls() {
 		Steps: 100,
 	})
 
-	app.Run()
+	//app.Run()
 
 	// Run the simulation.
 	// Due to the use of the OpenGL UI system, the model must be run via [window.Run].
 	// Comment out the code line above, and uncomment the next line to run this example stand-alone.
 
-	// window.Run(m)
+	window.Run(app)
 
 	// Output:
 }
