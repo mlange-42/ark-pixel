@@ -80,7 +80,7 @@ func (w *Window) InitializeUI(world *ecs.World) {
 		w.Bounds.H = 768
 	}
 	if w.Title == "" {
-		w.Title = "Arche"
+		w.Title = "Ark"
 	}
 	cfg := opengl.WindowConfig{
 		Title:     w.Title,
