@@ -93,7 +93,7 @@ func (w *Window) InitializeUI(world *ecs.World) {
 		if err := recover(); err != nil {
 			txt := fmt.Sprint(err)
 			if txt == "mainthread: did not call Run" {
-				log.Fatal("ERROR: when using graphics via the pixel engine, run the model like this:\n    window.Run(model)")
+				log.Fatal("ERROR: when using graphics via the pixel engine, run the app like this:\n    window.Run(app)")
 			}
 			panic(err)
 		}
