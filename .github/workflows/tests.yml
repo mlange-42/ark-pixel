@@ -39,46 +39,11 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y libgl1-mesa-dev xorg-dev xorg xserver-xorg-video-dummy
+          sudo apt-get install -y libgl1-mesa-dev xorg-dev xvfb
           go get .
-
-      - name: Configure Xorg
-        run: |
-          echo 'Section "Device"
-          Identifier "dummy_device"
-          Driver "dummy"
-          VideoRam 256000
-          EndSection
-  
-          Section "Monitor"
-          Identifier "dummy_monitor"
-          HorizSync 31.5-48.5
-          VertRefresh 50-70
-          EndSection
-  
-          Section "Screen"
-          Identifier "dummy_screen"
-          Device "dummy_device"
-          Monitor "dummy_monitor"
-          SubSection "Display"
-          Depth 24
-          Modes "1024x768"
-          EndSubSection
-          EndSection
-  
-          Section "ServerLayout"
-          Identifier "dummy_layout"
-          Screen "dummy_screen"
-          EndSection' > /tmp/xorg.conf
-  
-      - name: Start Xorg server
-        run: |
-          sudo Xorg -config /tmp/xorg.conf :1 &
-
       - name: Run tests
         run: |
-          export DISPLAY=:1
-          go test -v -p 1 ./... -covermode=count -coverprofile="coverage.out"
+          xvfb-run go test -v ./... -covermode=count -coverprofile="coverage.out"
           go tool cover -func="coverage.out"
       - name: Coveralls
         uses: coverallsapp/github-action@v2
