@@ -1,9 +1,9 @@
-package plot_test
+package monitor_test
 
 import (
 	"testing"
 
-	"github.com/mlange-42/ark-pixel/plot"
+	"github.com/mlange-42/ark-pixel/monitor"
 	"github.com/mlange-42/ark-pixel/window"
 	"github.com/mlange-42/ark-tools/app"
 	"github.com/mlange-42/ark-tools/resource"
@@ -28,7 +28,7 @@ func ExampleInspector() {
 
 	// Create a window with an Inspector drawer.
 	app.AddUISystem((&window.Window{}).
-		With(&plot.Inspector{}))
+		With(&monitor.Inspector{}))
 
 	// Add a termination system that ends the simulation.
 	app.AddSystem(&system.FixedTermination{
@@ -57,7 +57,7 @@ func TestInspector(t *testing.T) {
 	ecs.AddResource(&app.World, &resource.SelectedEntity{Selected: entity})
 
 	app.AddUISystem((&window.Window{}).
-		With(&plot.Inspector{
+		With(&monitor.Inspector{
 			HideNames: true,
 		}))
 
@@ -79,7 +79,7 @@ func TestInspector_DeadEntity(t *testing.T) {
 	ecs.AddResource(&app.World, &resource.SelectedEntity{Selected: entity})
 
 	app.AddUISystem((&window.Window{}).
-		With(&plot.Inspector{
+		With(&monitor.Inspector{
 			HideNames: true,
 		}))
 

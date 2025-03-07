@@ -1,7 +1,7 @@
-package plot_test
+package monitor_test
 
 import (
-	"github.com/mlange-42/ark-pixel/plot"
+	"github.com/mlange-42/ark-pixel/monitor"
 	"github.com/mlange-42/ark-pixel/window"
 	"github.com/mlange-42/ark-tools/app"
 	"github.com/mlange-42/ark-tools/system"
@@ -16,7 +16,7 @@ func ExampleMonitor() {
 
 	// Create a window with a Monitor drawer.
 	app.AddUISystem((&window.Window{}).
-		With(&plot.Monitor{}))
+		With(&monitor.Monitor{}))
 
 	// Add a termination system that ends the simulation.
 	app.AddSystem(&system.FixedTermination{
@@ -40,7 +40,7 @@ func ExampleNewMonitorWindow() {
 	app.TPS = 30
 
 	// Create a window with a Monitor drawer, using the shorthand constructor.
-	app.AddUISystem(plot.NewMonitorWindow(10))
+	app.AddUISystem(monitor.NewMonitorWindow(10))
 
 	// Add a termination system that ends the simulation.
 	app.AddSystem(&system.FixedTermination{

@@ -1,4 +1,4 @@
-package plot_test
+package monitor_test
 
 import (
 	"os"
