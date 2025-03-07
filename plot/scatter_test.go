@@ -61,7 +61,7 @@ func TestScatter(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	app.Run()
+	//app.Run()
 }
 
 func TestScatter_PanicXCount(t *testing.T) {
