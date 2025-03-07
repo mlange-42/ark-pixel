@@ -4,6 +4,7 @@ go 1.24.0
 
 require (
 	github.com/gopxl/pixel/v2 v2.1.0
+	github.com/mazznoer/colorgrad v0.10.0
 	github.com/mlange-42/ark v0.2.1-0.20250307110931-ca9dc1892656
 	github.com/mlange-42/ark-tools v0.1.2-0.20250306214441-cd2dcefba0ac
 	github.com/stretchr/testify v1.10.0
@@ -25,6 +26,7 @@ require (
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
 	github.com/gopxl/glhf/v2 v2.0.0 // indirect
 	github.com/gopxl/mainthread/v2 v2.1.1 // indirect
+	github.com/mazznoer/csscolorparser v0.1.5 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	golang.org/x/text v0.23.0 // indirect
