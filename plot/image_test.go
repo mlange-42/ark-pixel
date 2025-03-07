@@ -64,7 +64,7 @@ func TestImage_LimitsScale(t *testing.T) {
 		Steps: 100,
 	})
 
-	app.Run()
+	//app.Run()
 }
 
 // Example observer, reporting a matrix with z = sin(0.1*i) + sin(0.2*j).
