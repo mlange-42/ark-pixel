@@ -40,8 +40,8 @@ github.com/mazznoer/colorgrad v0.10.0 h1:p2ImJimPGEUFhMrNx4EGSzkr2XARomIo1yyUgso
 github.com/mazznoer/colorgrad v0.10.0/go.mod h1:1dkoC2jE1oMVr11umiBHfyHV/W+E+By2WJaPKJJ6Nkk=
 github.com/mazznoer/csscolorparser v0.1.5 h1:Wr4uNIE+pHWN3TqZn2SGpA2nLRG064gB7WdSfSS5cz4=
 github.com/mazznoer/csscolorparser v0.1.5/go.mod h1:OQRVvgCyHDCAquR1YWfSwwaDcM0LhnSffGnlbOew/3I=
-github.com/mlange-42/ark v0.2.1-0.20250307110931-ca9dc1892656 h1:LraPkbM1psG5DQ6Rtx7CQzpqccyUnbBbYnTb+jNiguQ=
-github.com/mlange-42/ark v0.2.1-0.20250307110931-ca9dc1892656/go.mod h1:47KXHr5HLftLn4iyL8w04iv7KJUNUoDymEIotD41f3o=
+github.com/mlange-42/ark v0.2.1-0.20250307223441-fd8d545834b7 h1:vBcXS+Z8jkVKYxPmeZsQana5Xnl4G8ObSd9NJITy8Z8=
+github.com/mlange-42/ark v0.2.1-0.20250307223441-fd8d545834b7/go.mod h1:47KXHr5HLftLn4iyL8w04iv7KJUNUoDymEIotD41f3o=
 github.com/mlange-42/ark-tools v0.1.2-0.20250306214441-cd2dcefba0ac h1:qDNrdQTpNhtKZ+I7eNqYZPkR8dtr7W3P+C1mc/1iyA8=
 github.com/mlange-42/ark-tools v0.1.2-0.20250306214441-cd2dcefba0ac/go.mod h1:tcZ4J1mhpEoScbifLs5iJDBDcGGUlC1sXhYL7mnlK30=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=

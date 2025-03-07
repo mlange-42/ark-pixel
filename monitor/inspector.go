@@ -111,7 +111,8 @@ func (i *Inspector) Draw(w *ecs.World, win *opengl.Window) {
 
 	scroll := i.scroll
 	ids := w.Unsafe().IDs(sel)
-	for _, id := range ids {
+	for idx := range ids.Len() {
+		id := ids.Get(idx)
 		tp, _ := ecs.ComponentInfo(w, id)
 		ptr := w.Unsafe().Get(sel, id)
 		val := reflect.NewAt(tp.Type, ptr).Elem()
