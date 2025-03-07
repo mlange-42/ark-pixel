@@ -59,7 +59,5 @@ func TestContour_NoLevels(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-
-	window.Run(app)
 	//app.Run()
 }
