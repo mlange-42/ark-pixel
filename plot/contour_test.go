@@ -60,5 +60,6 @@ func TestContour_NoLevels(t *testing.T) {
 		Steps: 100,
 	})
 
-	app.Run()
+	window.Run(app)
+	//app.Run()
 }
