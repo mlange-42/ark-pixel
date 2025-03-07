@@ -12,7 +12,7 @@ import (
 )
 
 // Drawer interface.
-// Drawers are used by the [Window] to render information from an Arche model.
+// Drawers are used by the [Window] to render information from an Ark application.
 type Drawer interface {
 	// Initialize is called before any other method.
 	// Use it to initialize the Drawer.
@@ -49,7 +49,7 @@ func B(x, y, w, h int) Bounds {
 // Drawing is done by one or more [Drawer] instances.
 // Further, window bounds and update and draw intervals can be configured.
 //
-// If the world contains a resource of type [github.com/mlange-42/arche-model/resource/Termination],
+// If the world contains a resource of type [github.com/mlange-42/ark-tools/resource/Termination],
 // the model is terminated when the window is closed.
 type Window struct {
 	Title        string   // Window title. Optional.
@@ -80,7 +80,7 @@ func (w *Window) InitializeUI(world *ecs.World) {
 		w.Bounds.H = 768
 	}
 	if w.Title == "" {
-		w.Title = "Arche"
+		w.Title = "Ark"
 	}
 	cfg := opengl.WindowConfig{
 		Title:     w.Title,
@@ -93,7 +93,7 @@ func (w *Window) InitializeUI(world *ecs.World) {
 		if err := recover(); err != nil {
 			txt := fmt.Sprint(err)
 			if txt == "mainthread: did not call Run" {
-				log.Fatal("ERROR: when using graphics via the pixel engine, run the model like this:\n    window.Run(model)")
+				log.Fatal("ERROR: when using graphics via the pixel engine, run the app like this:\n    window.Run(app)")
 			}
 			panic(err)
 		}

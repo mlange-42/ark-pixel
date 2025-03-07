@@ -14,7 +14,7 @@ import (
 
 // Inspector drawer for inspecting entities.
 //
-// Shows information of the entity indicated by the SelectedEntity resource ([github.com/mlange-42/arche-model/resource.SelectedEntity]).
+// Shows information of the entity indicated by the SelectedEntity resource ([github.com/mlange-42/ark-tools/resource.SelectedEntity]).
 // Entity selection is to be done by another system, e.g. by user input.
 //
 // Details can be adjusted using the HideXxx fields.

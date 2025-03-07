@@ -9,6 +9,7 @@ import (
 func main() {
 	app := app.New()
 	app.TPS = 30
+
 	app.AddUISystem((&window.Window{}).
 		With(&monitor.PerfStats{}).
 		With(&monitor.Controls{}))
@@ -16,9 +17,8 @@ func main() {
 	app.AddUISystem((&window.Window{}).
 		With(&monitor.Systems{}))
 
-	//app.AddSystem(&system.FixedTermination{
-	//	Steps: 100,
-	//})
+	app.AddUISystem((&window.Window{}).
+		With(&monitor.Resources{}))
 
 	window.Run(app)
 }
