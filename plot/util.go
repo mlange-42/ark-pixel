@@ -3,19 +3,13 @@ package plot
 import (
 	"fmt"
 	"image/color"
-	"math"
 
-	"github.com/gopxl/pixel/v2/ext/text"
 	"github.com/mlange-42/ark-tools/observer"
 	"golang.org/x/image/colornames"
-	"golang.org/x/image/font/basicfont"
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/vg/vgimg"
 )
 
-var defaultFont = text.NewAtlas(basicfont.Face7x13, text.ASCII)
-
-var preferredTicks = []float64{1, 2, 5, 10}
 var preferredTps = []float64{0, 1, 2, 3, 4, 5, 7, 10, 15, 20, 30, 40, 50, 60, 80, 100, 120, 150, 200, 250, 500, 750, 1000, 2000, 5000, 10000}
 
 var defaultColors = []color.Color{
@@ -47,40 +41,6 @@ func find[T comparable](sl []T, value T) (int, bool) {
 // Calculate scale correction for scaled monitors.
 func calcScaleCorrection() float64 {
 	return 72.0 / vgimg.DefaultDPI
-}
-
-// Calculate the optimal step size for axis ticks.
-func calcTicksStep(max float64, desired int) float64 {
-	steps := float64(desired)
-	approxStep := float64(max) / (steps - 1)
-	stepPower := math.Pow(10, -math.Floor(math.Log10(approxStep)))
-	normalizedStep := approxStep * stepPower
-	for _, s := range preferredTicks {
-		if s >= normalizedStep {
-			normalizedStep = s
-			break
-		}
-	}
-	return normalizedStep / stepPower
-}
-
-// Calculate TPS when increasing/decreasing it.
-func calcTps(curr float64, increase bool) float64 {
-	ln := len(preferredTps)
-	if increase {
-		for i := 0; i < ln; i++ {
-			if preferredTps[i] > curr {
-				return preferredTps[i]
-			}
-		}
-		return curr
-	}
-	for i := 1; i < ln; i++ {
-		if preferredTps[i] >= curr {
-			return preferredTps[i-1]
-		}
-	}
-	return 0
 }
 
 func setLabels(p *plot.Plot, l Labels) {

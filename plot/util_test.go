@@ -40,26 +40,3 @@ func TestRingBuffer(t *testing.T) {
 		assert.Equal(t, i+10, r.Get(i))
 	}
 }
-
-func TestCalcTps(t *testing.T) {
-	tps := calcTps(1, true)
-	assert.Equal(t, 2.0, tps)
-
-	tps = calcTps(1, false)
-	assert.Equal(t, 0.0, tps)
-
-	tps = calcTps(100, true)
-	assert.Equal(t, 120.0, tps)
-
-	tps = calcTps(100, false)
-	assert.Equal(t, 80.0, tps)
-
-	tps = calcTps(99, true)
-	assert.Equal(t, 100.0, tps)
-
-	tps = calcTps(99, false)
-	assert.Equal(t, 80.0, tps)
-
-	tps = calcTps(12345, true)
-	assert.Equal(t, 12345.0, tps)
-}
