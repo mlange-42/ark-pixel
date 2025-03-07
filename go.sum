@@ -30,8 +30,8 @@ github.com/gopxl/mainthread/v2 v2.1.1 h1:S7jIvQZth9s2k8qFePOxtEgtZLzW/Yjykum2msc
 github.com/gopxl/mainthread/v2 v2.1.1/go.mod h1:RLdqSRamocAGPzK9P4HsZf+WXL5bfHHtX78O6GkKaUw=
 github.com/gopxl/pixel/v2 v2.3.0 h1:a6c83hhh1kwQ0Zs0GQ+oURg/gSXOHAxsUYTxNeyOhNo=
 github.com/gopxl/pixel/v2 v2.3.0/go.mod h1:4x2fUMpvunt+VFiBqd/5grkXCYTPoNwryqDWKnarFrs=
-github.com/mlange-42/ark v0.2.1-0.20250306213929-ec5db5ac0054 h1:6aZhsHhLa9vN3U0zrprGnLr7PRY/cugyKbvZPWN2LwY=
-github.com/mlange-42/ark v0.2.1-0.20250306213929-ec5db5ac0054/go.mod h1:47KXHr5HLftLn4iyL8w04iv7KJUNUoDymEIotD41f3o=
+github.com/mlange-42/ark v0.2.1-0.20250307110931-ca9dc1892656 h1:LraPkbM1psG5DQ6Rtx7CQzpqccyUnbBbYnTb+jNiguQ=
+github.com/mlange-42/ark v0.2.1-0.20250307110931-ca9dc1892656/go.mod h1:47KXHr5HLftLn4iyL8w04iv7KJUNUoDymEIotD41f3o=
 github.com/mlange-42/ark-tools v0.1.2-0.20250306214441-cd2dcefba0ac h1:qDNrdQTpNhtKZ+I7eNqYZPkR8dtr7W3P+C1mc/1iyA8=
 github.com/mlange-42/ark-tools v0.1.2-0.20250306214441-cd2dcefba0ac/go.mod h1:tcZ4J1mhpEoScbifLs5iJDBDcGGUlC1sXhYL7mnlK30=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
