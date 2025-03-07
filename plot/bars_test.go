@@ -53,7 +53,8 @@ func TestBars_Columns(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	app.Run()
+	window.Run(app)
+	//app.Run()
 }
 
 func TestBars_PanicColumns(t *testing.T) {
