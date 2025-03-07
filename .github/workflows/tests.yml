@@ -40,7 +40,7 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install -y libgl1-mesa-dev xorg-dev xvfb
-          go get .
+          go get ./...
       - name: Run tests
         run: |
           xvfb-run go test -v ./... -covermode=count -coverprofile="coverage.out"
