@@ -19,7 +19,7 @@ import (
 // Pause and resume the simulation via a button or by pressing SPACE.
 // Manipulate simulation speed (TPS) using buttons or UP/DOWN keys.
 //
-// Expects a world resource of type Systems ([github.com/mlange-42/arche-model/model.Systems]).
+// Expects a world resource of type Systems ([github.com/mlange-42/ark-tools/model.Systems]).
 type Controls struct {
 	Scale      float64 // Spatial scaling: cell size in screen pixels. Optional, default 1.
 	drawer     imdraw.IMDraw

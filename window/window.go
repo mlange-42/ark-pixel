@@ -49,7 +49,7 @@ func B(x, y, w, h int) Bounds {
 // Drawing is done by one or more [Drawer] instances.
 // Further, window bounds and update and draw intervals can be configured.
 //
-// If the world contains a resource of type [github.com/mlange-42/arche-model/resource/Termination],
+// If the world contains a resource of type [github.com/mlange-42/ark-tools/resource/Termination],
 // the model is terminated when the window is closed.
 type Window struct {
 	Title        string   // Window title. Optional.
