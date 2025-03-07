@@ -10,6 +10,7 @@ import (
 	"github.com/mlange-42/ark-tools/observer"
 	"github.com/mlange-42/ark-tools/system"
 	"github.com/mlange-42/ark/ecs"
+	"github.com/stretchr/testify/assert"
 )
 
 func ExampleImageRGB() {
@@ -38,9 +39,11 @@ func ExampleImageRGB() {
 		Steps: 100,
 	})
 
+	app.Run()
+
 	// Run the simulation.
 	// Due to the use of the OpenGL UI system, the model must be run via [window.Run].
-	// Uncomment the next line to run this example stand-alone.
+	// Comment out the code line above, and uncomment the next line to run this example stand-alone.
 
 	// window.Run(m)
 
@@ -61,7 +64,7 @@ func TestImageRGB(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//app.Run()
+	app.Run()
 }
 
 func TestImageRGB_PanicMin(t *testing.T) {
@@ -79,7 +82,7 @@ func TestImageRGB_PanicMin(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//assert.Panics(t, app.Run)
+	assert.Panics(t, app.Run)
 }
 
 func TestImageRGB_PanicMax(t *testing.T) {
@@ -97,7 +100,7 @@ func TestImageRGB_PanicMax(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//assert.Panics(t, app.Run)
+	assert.Panics(t, app.Run)
 }
 
 func TestImageRGB_PanicLayerCount(t *testing.T) {
@@ -115,7 +118,7 @@ func TestImageRGB_PanicLayerCount(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//assert.Panics(t, app.Run)
+	assert.Panics(t, app.Run)
 }
 
 func TestImageRGB_PanicLayerIndex(t *testing.T) {
@@ -133,7 +136,7 @@ func TestImageRGB_PanicLayerIndex(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//assert.Panics(t, app.Run)
+	assert.Panics(t, app.Run)
 }
 
 // Example observer, reporting a matrix filled with a callback(i, j).

@@ -8,6 +8,7 @@ import (
 	"github.com/mlange-42/ark-tools/app"
 	"github.com/mlange-42/ark-tools/observer"
 	"github.com/mlange-42/ark-tools/system"
+	"github.com/stretchr/testify/assert"
 )
 
 func ExampleScatter() {
@@ -37,9 +38,11 @@ func ExampleScatter() {
 		Steps: 100,
 	})
 
+	app.Run()
+
 	// Run the simulation.
 	// Due to the use of the OpenGL UI system, the model must be run via [window.Run].
-	// Uncomment the next line to run this example stand-alone.
+	// Comment out the code line above, and uncomment the next line to run this example stand-alone.
 
 	//window.Run(app)
 
@@ -60,7 +63,7 @@ func TestScatter(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//app.Run()
+	app.Run()
 }
 
 func TestScatter_PanicXCount(t *testing.T) {
@@ -78,7 +81,7 @@ func TestScatter_PanicXCount(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//assert.Panics(t, app.Run)
+	assert.Panics(t, app.Run)
 }
 
 func TestScatter_PanicX(t *testing.T) {
@@ -96,7 +99,7 @@ func TestScatter_PanicX(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//assert.Panics(t, app.Run)
+	assert.Panics(t, app.Run)
 }
 
 func TestScatter_PanicYCount(t *testing.T) {
@@ -117,7 +120,7 @@ func TestScatter_PanicYCount(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//assert.Panics(t, app.Run)
+	assert.Panics(t, app.Run)
 }
 
 func TestScatter_PanicY(t *testing.T) {
@@ -137,5 +140,5 @@ func TestScatter_PanicY(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//assert.Panics(t, app.Run)
+	assert.Panics(t, app.Run)
 }

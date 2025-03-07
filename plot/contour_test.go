@@ -33,9 +33,11 @@ func ExampleContour() {
 		Steps: 100,
 	})
 
+	app.Run()
+
 	// Run the simulation.
 	// Due to the use of the OpenGL UI system, the model must be run via [window.Run].
-	// Uncomment the next line to run this example stand-alone.
+	// Comment out the code line above, and uncomment the next line to run this example stand-alone.
 
 	// window.Run(m)
 
@@ -57,5 +59,5 @@ func TestContour_NoLevels(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//app.Run()
+	app.Run()
 }
