@@ -12,7 +12,7 @@ import (
 )
 
 // Drawer interface.
-// Drawers are used by the [Window] to render information from an Arche model.
+// Drawers are used by the [Window] to render information from an Ark application.
 type Drawer interface {
 	// Initialize is called before any other method.
 	// Use it to initialize the Drawer.
