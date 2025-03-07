@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/mlange-42/ark-pixel/plot"
+	"github.com/mlange-42/ark-pixel/monitor"
 	"github.com/mlange-42/ark-pixel/window"
 	"github.com/mlange-42/ark-tools/app"
 )
@@ -10,11 +10,11 @@ func main() {
 	app := app.New()
 	app.TPS = 30
 	app.AddUISystem((&window.Window{}).
-		With(&plot.PerfStats{}).
-		With(&plot.Controls{}))
+		With(&monitor.PerfStats{}).
+		With(&monitor.Controls{}))
 
 	app.AddUISystem((&window.Window{}).
-		With(&plot.Systems{}))
+		With(&monitor.Systems{}))
 
 	//app.AddSystem(&system.FixedTermination{
 	//	Steps: 100,

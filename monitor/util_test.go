@@ -1,4 +1,4 @@
-package plot
+package monitor
 
 import (
 	"testing"
