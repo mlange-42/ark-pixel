@@ -73,11 +73,11 @@ jobs:
   
       - name: Start Xorg server
         run: |
-          sudo Xorg -config /tmp/xorg.conf :1 &
-          export DISPLAY=:1
+          sudo Xorg -config /tmp/xorg.conf :1
 
       - name: Run tests
         run: |
+          export DISPLAY=:1
           go test -v ./... -covermode=count -coverprofile="coverage.out"
           go tool cover -func="coverage.out"
       - name: Coveralls

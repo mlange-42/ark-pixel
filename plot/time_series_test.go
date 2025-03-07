@@ -53,7 +53,7 @@ func TestTimeSeries_Columns(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	app.Run()
+	window.Run(app)
 }
 
 func TestTimeSeries_PanicColumns(t *testing.T) {
