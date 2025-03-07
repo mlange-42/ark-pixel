@@ -10,8 +10,6 @@ import (
 	"gonum.org/v1/plot/vg/vgimg"
 )
 
-var preferredTps = []float64{0, 1, 2, 3, 4, 5, 7, 10, 15, 20, 30, 40, 50, 60, 80, 100, 120, 150, 200, 250, 500, 750, 1000, 2000, 5000, 10000}
-
 var defaultColors = []color.Color{
 	colornames.Blue,
 	colornames.Orange,
