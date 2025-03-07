@@ -43,8 +43,7 @@ jobs:
           go get .
       - name: Run tests
         run: |
-          Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-          go test -v ./... -covermode=count -coverprofile="coverage.out"
+          xvfb-run -s "-screen 0 1024x768x24" go test -v ./... -covermode=count -coverprofile="coverage.out"
           go tool cover -func="coverage.out"
       - name: Coveralls
         uses: coverallsapp/github-action@v2
