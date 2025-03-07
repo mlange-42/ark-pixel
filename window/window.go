@@ -87,7 +87,6 @@ func (w *Window) InitializeUI(world *ecs.World) {
 		Bounds:    pixel.R(0, 0, float64(w.Bounds.W), float64(w.Bounds.H)),
 		Position:  pixel.V(float64(w.Bounds.X), float64(w.Bounds.Y)),
 		Resizable: true,
-		Invisible: true,
 	}
 
 	defer func() {
