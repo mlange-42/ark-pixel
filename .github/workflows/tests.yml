@@ -41,8 +41,6 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install -y libgl1-mesa-dev xorg-dev xvfb
           go get .
-      - name: Build
-        run: go build -v ./...
       - name: Run tests
         run: |
           export DISPLAY=:99
