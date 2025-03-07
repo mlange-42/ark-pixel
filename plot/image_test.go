@@ -38,9 +38,11 @@ func ExampleImage() {
 		Steps: 100,
 	})
 
+	app.Run()
+
 	// Run the simulation.
 	// Due to the use of the OpenGL UI system, the model must be run via [window.Run].
-	// Uncomment the next line to run this example stand-alone.
+	// Comment out the code line above, and uncomment the next line to run this example stand-alone.
 
 	// window.Run(m)
 
@@ -62,7 +64,7 @@ func TestImage_LimitsScale(t *testing.T) {
 		Steps: 100,
 	})
 
-	//app.Run()
+	app.Run()
 }
 
 // Example observer, reporting a matrix with z = sin(0.1*i) + sin(0.2*j).

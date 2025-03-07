@@ -7,6 +7,7 @@ import (
 	"github.com/mlange-42/ark-pixel/window"
 	"github.com/mlange-42/ark-tools/app"
 	"github.com/mlange-42/ark-tools/system"
+	"github.com/stretchr/testify/assert"
 )
 
 func ExampleBars() {
@@ -29,9 +30,11 @@ func ExampleBars() {
 		Steps: 100,
 	})
 
+	app.Run()
+
 	// Run the simulation.
 	// Due to the use of the OpenGL UI system, the model must be run via [window.Run].
-	// Uncomment the next line to run this example stand-alone.
+	// Comment out the code line above, and uncomment the next line to run this example stand-alone.
 
 	// window.Run(m)
 
@@ -50,7 +53,7 @@ func TestBars_Columns(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//app.Run()
+	app.Run()
 }
 
 func TestBars_PanicColumns(t *testing.T) {
@@ -64,5 +67,5 @@ func TestBars_PanicColumns(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//assert.Panics(t, app.Run)
+	assert.Panics(t, app.Run)
 }

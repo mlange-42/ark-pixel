@@ -9,6 +9,7 @@ import (
 	"github.com/mlange-42/ark-tools/app"
 	"github.com/mlange-42/ark-tools/system"
 	"github.com/mlange-42/ark/ecs"
+	"github.com/stretchr/testify/assert"
 )
 
 func ExampleTimeSeries() {
@@ -30,6 +31,8 @@ func ExampleTimeSeries() {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
+
+	app.Run()
 
 	// Run the simulation.
 	// Due to the use of the OpenGL UI system, the model must be run via [window.Run].
@@ -53,7 +56,7 @@ func TestTimeSeries_Columns(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//app.Run()
+	app.Run()
 }
 
 func TestTimeSeries_PanicColumns(t *testing.T) {
@@ -68,7 +71,7 @@ func TestTimeSeries_PanicColumns(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-	//assert.Panics(t, app.Run)
+	assert.Panics(t, app.Run)
 }
 
 // RowObserver to generate random time series.

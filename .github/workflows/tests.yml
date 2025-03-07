@@ -43,7 +43,6 @@ jobs:
           go get .
       - name: Run tests
         run: |
-          export DISPLAY=:99
           xvfb-run go test -v ./... -covermode=count -coverprofile="coverage.out"
           go tool cover -func="coverage.out"
       - name: Coveralls

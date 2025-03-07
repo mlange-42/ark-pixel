@@ -7,6 +7,7 @@ import (
 	"github.com/mlange-42/ark-pixel/window"
 	"github.com/mlange-42/ark-tools/app"
 	"github.com/mlange-42/ark-tools/system"
+	"github.com/stretchr/testify/assert"
 )
 
 func ExampleLines() {
@@ -31,9 +32,11 @@ func ExampleLines() {
 		Steps: 100,
 	})
 
+	app.Run()
+
 	// Run the simulation.
 	// Due to the use of the OpenGL UI system, the model must be run via [window.Run].
-	// Uncomment the next line to run this example stand-alone.
+	// Comment out the code line above, and uncomment the next line to run this example stand-alone.
 
 	// window.Run(m)
 
@@ -53,8 +56,7 @@ func TestLines(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-
-	//app.Run()
+	app.Run()
 }
 
 func TestLines_PanicX(t *testing.T) {
@@ -68,8 +70,7 @@ func TestLines_PanicX(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-
-	//assert.Panics(t, app.Run)
+	assert.Panics(t, app.Run)
 }
 
 func TestLines_PanicY(t *testing.T) {
@@ -84,8 +85,7 @@ func TestLines_PanicY(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-
-	//assert.Panics(t, app.Run)
+	assert.Panics(t, app.Run)
 }
 
 func TestLinesNaN(t *testing.T) {
@@ -100,6 +100,5 @@ func TestLinesNaN(t *testing.T) {
 	app.AddSystem(&system.FixedTermination{
 		Steps: 100,
 	})
-
-	//app.Run()
+	app.Run()
 }
