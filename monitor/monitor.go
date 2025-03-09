@@ -67,6 +67,12 @@ func NewMonitorWindow(drawInterval int) *window.Window {
 //   - TPS: (simulation) ticks per second
 //   - TPT: time per (simulation) tick
 //   - Time: total run time of the simulation
+//
+// Archetype info:
+//   - Number of used/total tables (for cyan relation archetypes only)
+//   - Bytes per entity
+//   - Components of the archetype
+//   - Entities in the archetype (right-aligned)
 type Monitor struct {
 	PlotCapacity   int           // Number of values in time series plots. Optional, default 300.
 	SampleInterval time.Duration // Approx. time between measurements for time series plots. Optional, default 1 second.
@@ -79,6 +85,7 @@ type Monitor struct {
 	frameTimer     frameTimer
 	archetypes     archetypes
 	text           *text.Text
+	textRight      *text.Text
 	startTime      time.Time
 	lastPlotUpdate time.Time
 	step           int64
@@ -111,8 +118,11 @@ func (m *Monitor) Initialize(w *ecs.World, win *opengl.Window) {
 	fmt.Fprintf(m.timeSeries.Text[tsMemory], "Memory")
 	fmt.Fprintf(m.timeSeries.Text[tsTickPerSec], "TPS")
 
-	m.text = text.New(px.V(0, 0), defaultFont)
+	m.text = text.New(px.V(0, 0), defaultFont).AlignedTo(px.TopRight)
 	m.text.Color = color.RGBA{200, 200, 200, 255}
+
+	m.textRight = text.New(px.V(0, 0), defaultFont).AlignedTo(px.TopLeft)
+	m.textRight.Color = color.RGBA{200, 200, 200, 255}
 
 	m.step = 0
 }
@@ -296,8 +306,12 @@ func (m *Monitor) drawArchetype(win *opengl.Window, x, y, w, h float64, max int,
 	if arch.NumRelations > 0 {
 		m.text.Clear()
 		fmt.Fprintf(m.text, "%5d / %5d", len(arch.Tables), len(arch.Tables)+arch.FreeTables)
-		m.text.Draw(win, px.IM.Moved(px.V(x+3, y+3)))
+		m.text.Draw(win, px.IM.Moved(px.V(x+5, y+3)))
 	}
+
+	m.textRight.Clear()
+	fmt.Fprintf(m.textRight, "%d", arch.Size)
+	m.textRight.Draw(win, px.IM.Moved(px.V(x+w-5, y+3)))
 }
 
 func (m *Monitor) drawPlot(win *opengl.Window, x, y, w, h float64, series ...timeSeriesType) {
@@ -437,7 +451,7 @@ func (a *archetypes) Update(stats *stats.World) {
 		text := text.New(px.V(0, 0), defaultFont)
 		text.Color = color.RGBA{200, 200, 200, 255}
 		sb := strings.Builder{}
-		sb.WriteString(fmt.Sprintf("              %4d B: ", node.MemoryPerEntity))
+		sb.WriteString(fmt.Sprintf("              %4d B  ", node.MemoryPerEntity))
 		types := node.ComponentTypes
 		for j := 0; j < len(types); j++ {
 			sb.WriteString(types[j].Name())
