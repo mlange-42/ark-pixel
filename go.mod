@@ -5,7 +5,7 @@ go 1.24.0
 require (
 	github.com/gopxl/pixel/v2 v2.1.0
 	github.com/mazznoer/colorgrad v0.10.0
-	github.com/mlange-42/ark v0.3.0
+	github.com/mlange-42/ark v0.3.1-0.20250310172048-a652e0be390a
 	github.com/mlange-42/ark-tools v0.1.2
 	github.com/stretchr/testify v1.10.0
 	golang.org/x/image v0.25.0

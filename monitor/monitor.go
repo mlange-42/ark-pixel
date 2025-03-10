@@ -22,6 +22,7 @@ const (
 	tsEntities timeSeriesType = iota
 	tsEntityCap
 	tsMemory
+	tsMemoryUsed
 	tsTickPerSec
 	tsLast
 )
@@ -116,6 +117,7 @@ func (m *Monitor) Initialize(w *ecs.World, win *opengl.Window) {
 	fmt.Fprintf(m.timeSeries.Text[tsEntities], "Entities")
 	fmt.Fprintf(m.timeSeries.Text[tsEntityCap], "Capacity")
 	fmt.Fprintf(m.timeSeries.Text[tsMemory], "Memory")
+	fmt.Fprintf(m.timeSeries.Text[tsMemoryUsed], "Memory used")
 	fmt.Fprintf(m.timeSeries.Text[tsTickPerSec], "TPS")
 
 	m.text = text.New(px.V(0, 0), defaultFont).AlignedTo(px.TopRight)
@@ -136,7 +138,8 @@ func (m *Monitor) Update(w *ecs.World) {
 		stats := w.Stats()
 		m.archetypes.Update(stats)
 		m.timeSeries.append(
-			stats.Entities.Used, stats.Entities.Total, stats.Memory,
+			stats.Entities.Used, stats.Entities.Total,
+			stats.Memory, stats.MemoryUsed,
 			int(m.frameTimer.FPS()*1000000),
 		)
 		m.lastPlotUpdate = t
@@ -207,7 +210,7 @@ func (m *Monitor) Draw(w *ecs.World, win *opengl.Window) {
 		}
 		m.drawPlot(win, x0, plotY0-plotHeight, plotWidth, plotHeight, tsEntities, tsEntityCap)
 		plotY0 -= plotHeight + 10
-		m.drawPlot(win, x0, plotY0-plotHeight, plotWidth, plotHeight, tsMemory)
+		m.drawPlot(win, x0, plotY0-plotHeight, plotWidth, plotHeight, tsMemory, tsMemoryUsed)
 		plotY0 -= plotHeight + 10
 		m.drawPlot(win, x0, plotY0-plotHeight, plotWidth, plotHeight, tsTickPerSec)
 
@@ -388,10 +391,11 @@ func newTimeSeries(cap int) timeSeries {
 	return ts
 }
 
-func (t *timeSeries) append(entities, entityCap, memory, tps int) {
+func (t *timeSeries) append(entities, entityCap, memory, memoryUsed, tps int) {
 	t.Values[tsEntities].Add(entities)
 	t.Values[tsEntityCap].Add(entityCap)
 	t.Values[tsMemory].Add(memory)
+	t.Values[tsMemoryUsed].Add(memoryUsed)
 	t.Values[tsTickPerSec].Add(tps)
 }
 
