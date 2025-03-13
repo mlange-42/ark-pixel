@@ -163,7 +163,7 @@ func (m *Monitor) Draw(w *ecs.World, win *opengl.Window) {
 	split := width < 1080
 	fmt.Fprintf(
 		m.summary, "Tick: %8d  |  Ent.: %7d  |  Archetypes: %3d  |  Comp: %3d  |  Cache: %3d",
-		m.step, stats.Entities.Used, len(stats.Archetypes), stats.ComponentCount, stats.CachedFilters,
+		m.step, stats.Entities.Used, len(stats.Archetypes), len(stats.ComponentTypes), stats.CachedFilters,
 	)
 	if split {
 		fmt.Fprintf(
