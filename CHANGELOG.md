@@ -1,5 +1,15 @@
 # Changelog
 
+## [[v0.1.3]](https://github.com/mlange-42/ark-pixel/compare/v0.1.2...v0.1.3)
+
+### Documentation
+
+- Fix comments in plot examples on how to run on main thread  (#17)
+
+### Other
+
+- Upgrade dependencies (#17)
+
 ## [[v0.1.2]](https://github.com/mlange-42/ark-pixel/compare/v0.1.1...v0.1.2)
 
 - Reserved and used memory are both displayed in `Monitor` (#14)
