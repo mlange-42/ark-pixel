@@ -40,7 +40,7 @@ type Bounds struct {
 	H int // Height
 }
 
-// B created a new Bounds object.
+// B creates a new Bounds object.
 func B(x, y, w, h int) Bounds {
 	return Bounds{x, y, w, h}
 }
