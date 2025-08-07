@@ -1,5 +1,11 @@
 # Changelog
 
+## [[v0.1.4]](https://github.com/mlange-42/ark-pixel/compare/v0.1.3...v0.1.4)
+
+### Other
+
+- Removes duplicate type `monitor.Labels` (#19)
+
 ## [[v0.1.3]](https://github.com/mlange-42/ark-pixel/compare/v0.1.2...v0.1.3)
 
 ### Documentation
