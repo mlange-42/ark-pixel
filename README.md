@@ -38,10 +38,10 @@
 go get github.com/mlange-42/ark-pixel
 ```
 
-The dependencies of [go-gl/gl](https://github.com/go-gl/gl) and [go-gl/glfw](https://github.com/go-gl/glfw) apply. For Ubuntu/Debian-based systems, these are:
+The **dependencies** of [go-gl/gl](https://github.com/go-gl/gl) and [go-gl/glfw](https://github.com/go-gl/glfw) apply:
 
-- `libgl1-mesa-dev`
-- `xorg-dev`
+- A cgo compiler (typically gcc).
+- For Ubuntu/Debian-based systems, you also need `libgl1-mesa-dev` and `xorg-dev`
 
 ## Usage
 
