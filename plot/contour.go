@@ -33,7 +33,7 @@ type Contour struct {
 }
 
 // Initialize the drawer.
-func (c *Contour) Initialize(w *ecs.World, win *opengl.Window) {
+func (c *Contour) Initialize(w *ecs.World, _ *opengl.Window) {
 	c.Observer.Initialize(w)
 	c.data = plotGrid{
 		Grid: c.Observer,
@@ -47,7 +47,7 @@ func (c *Contour) Update(w *ecs.World) {
 }
 
 // UpdateInputs handles input events of the previous frame update.
-func (c *Contour) UpdateInputs(w *ecs.World, win *opengl.Window) {}
+func (c *Contour) UpdateInputs(_ *ecs.World, _ *opengl.Window) {}
 
 // Draw the drawer.
 func (c *Contour) Draw(w *ecs.World, win *opengl.Window) {

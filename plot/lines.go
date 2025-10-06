@@ -38,7 +38,7 @@ type Lines struct {
 }
 
 // Initialize the drawer.
-func (l *Lines) Initialize(w *ecs.World, win *opengl.Window) {
+func (l *Lines) Initialize(w *ecs.World, _ *opengl.Window) {
 	l.Observer.Initialize(w)
 
 	l.headers = l.Observer.Header()
@@ -81,7 +81,7 @@ func (l *Lines) Update(w *ecs.World) {
 }
 
 // UpdateInputs handles input events of the previous frame update.
-func (l *Lines) UpdateInputs(w *ecs.World, win *opengl.Window) {}
+func (l *Lines) UpdateInputs(_ *ecs.World, _ *opengl.Window) {}
 
 // Draw the drawer.
 func (l *Lines) Draw(w *ecs.World, win *opengl.Window) {

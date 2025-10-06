@@ -44,7 +44,7 @@ func (t *TimeSeries) append(x float64, values []float64) {
 }
 
 // Initialize the drawer.
-func (t *TimeSeries) Initialize(w *ecs.World, win *opengl.Window) {
+func (t *TimeSeries) Initialize(w *ecs.World, _ *opengl.Window) {
 	t.Observer.Initialize(w)
 
 	t.headers = t.Observer.Header()
@@ -81,10 +81,10 @@ func (t *TimeSeries) Update(w *ecs.World) {
 }
 
 // UpdateInputs handles input events of the previous frame update.
-func (t *TimeSeries) UpdateInputs(w *ecs.World, win *opengl.Window) {}
+func (t *TimeSeries) UpdateInputs(_ *ecs.World, _ *opengl.Window) {}
 
 // Draw the drawer.
-func (t *TimeSeries) Draw(w *ecs.World, win *opengl.Window) {
+func (t *TimeSeries) Draw(_ *ecs.World, win *opengl.Window) {
 	width := win.Canvas().Bounds().W()
 	height := win.Canvas().Bounds().H()
 

@@ -31,7 +31,7 @@ type Bars struct {
 }
 
 // Initialize the drawer.
-func (b *Bars) Initialize(w *ecs.World, win *opengl.Window) {
+func (b *Bars) Initialize(w *ecs.World, _ *opengl.Window) {
 	b.Observer.Initialize(w)
 
 	headers := b.Observer.Header()
@@ -68,7 +68,7 @@ func (b *Bars) Update(w *ecs.World) {
 }
 
 // UpdateInputs handles input events of the previous frame update.
-func (b *Bars) UpdateInputs(w *ecs.World, win *opengl.Window) {}
+func (b *Bars) UpdateInputs(_ *ecs.World, _ *opengl.Window) {}
 
 // Draw the drawer.
 func (b *Bars) Draw(w *ecs.World, win *opengl.Window) {

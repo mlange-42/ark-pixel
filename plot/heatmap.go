@@ -32,7 +32,7 @@ type HeatMap struct {
 }
 
 // Initialize the drawer.
-func (h *HeatMap) Initialize(w *ecs.World, win *opengl.Window) {
+func (h *HeatMap) Initialize(w *ecs.World, _ *opengl.Window) {
 	h.Observer.Initialize(w)
 	h.data = plotGrid{
 		Grid: h.Observer,
@@ -51,7 +51,7 @@ func (h *HeatMap) Update(w *ecs.World) {
 }
 
 // UpdateInputs handles input events of the previous frame update.
-func (h *HeatMap) UpdateInputs(w *ecs.World, win *opengl.Window) {}
+func (h *HeatMap) UpdateInputs(_ *ecs.World, _ *opengl.Window) {}
 
 // Draw the drawer.
 func (h *HeatMap) Draw(w *ecs.World, win *opengl.Window) {

@@ -30,7 +30,7 @@ type Field struct {
 }
 
 // Initialize the drawer.
-func (f *Field) Initialize(w *ecs.World, win *opengl.Window) {
+func (f *Field) Initialize(w *ecs.World, _ *opengl.Window) {
 	f.Observer.Initialize(w)
 
 	f.data = plotField{
@@ -58,7 +58,7 @@ func (f *Field) Update(w *ecs.World) {
 }
 
 // UpdateInputs handles input events of the previous frame update.
-func (f *Field) UpdateInputs(w *ecs.World, win *opengl.Window) {}
+func (f *Field) UpdateInputs(_ *ecs.World, _ *opengl.Window) {}
 
 // Draw the drawer.
 func (f *Field) Draw(w *ecs.World, win *opengl.Window) {
@@ -101,7 +101,7 @@ type plotField struct {
 }
 
 func (f *plotField) Vector(c, r int) plotter.XY {
-	w, _ := f.GridLayers.Dims()
+	w, _ := f.Dims()
 	return plotter.XY{
 		X: f.XValues[r*w+c],
 		Y: f.YValues[r*w+c],

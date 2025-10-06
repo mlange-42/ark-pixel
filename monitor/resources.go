@@ -29,7 +29,7 @@ type Resources struct {
 }
 
 // Initialize the system
-func (i *Resources) Initialize(w *ecs.World, win *opengl.Window) {
+func (i *Resources) Initialize(_ *ecs.World, win *opengl.Window) {
 	i.text = text.New(px.V(0, 0), defaultFont)
 	i.helpText = text.New(px.V(0, 0), defaultFont)
 
@@ -40,10 +40,10 @@ func (i *Resources) Initialize(w *ecs.World, win *opengl.Window) {
 }
 
 // Update the drawer.
-func (i *Resources) Update(w *ecs.World) {}
+func (i *Resources) Update(_ *ecs.World) {}
 
 // UpdateInputs handles input events of the previous frame update.
-func (i *Resources) UpdateInputs(w *ecs.World, win *opengl.Window) {
+func (i *Resources) UpdateInputs(_ *ecs.World, win *opengl.Window) {
 	if win.JustPressed(px.KeyF) {
 		i.HideFields = !i.HideFields
 		return
@@ -112,7 +112,7 @@ func (i *Resources) Draw(w *ecs.World, win *opengl.Window) {
 				field := tp.Field(k)
 				if field.IsExported() {
 					if scroll <= 0 {
-						i.printField(i.text, tp, field, val.Field(k))
+						i.printField(i.text, field, val.Field(k))
 					}
 					scroll--
 				}
@@ -127,7 +127,7 @@ func (i *Resources) Draw(w *ecs.World, win *opengl.Window) {
 	i.text.Draw(win, px.IM.Moved(px.V(x0, y0)))
 }
 
-func (i *Resources) printField(w io.Writer, tp reflect.Type, field reflect.StructField, value reflect.Value) {
+func (i *Resources) printField(w io.Writer, field reflect.StructField, value reflect.Value) {
 	fmt.Fprintf(w, "    %-20s ", field.Name)
 	if !i.HideTypes {
 		fmt.Fprintf(w, "    %-16s ", value.Type())

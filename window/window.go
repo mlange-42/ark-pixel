@@ -69,7 +69,7 @@ func (w *Window) With(drawers ...Drawer) *Window {
 }
 
 // Initialize the window system.
-func (w *Window) Initialize(world *ecs.World) {}
+func (w *Window) Initialize(_ *ecs.World) {}
 
 // InitializeUI the window system.
 func (w *Window) InitializeUI(world *ecs.World) {
@@ -159,9 +159,9 @@ func (w *Window) PostUpdateUI(world *ecs.World) {
 }
 
 // Finalize the window system.
-func (w *Window) Finalize(world *ecs.World) {}
+func (w *Window) Finalize(_ *ecs.World) {}
 
 // FinalizeUI the window system.
-func (w *Window) FinalizeUI(world *ecs.World) {
+func (w *Window) FinalizeUI(_ *ecs.World) {
 	w.window.Destroy()
 }

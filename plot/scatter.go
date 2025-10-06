@@ -36,7 +36,7 @@ type Scatter struct {
 }
 
 // Initialize the drawer.
-func (s *Scatter) Initialize(w *ecs.World, win *opengl.Window) {
+func (s *Scatter) Initialize(w *ecs.World, _ *opengl.Window) {
 	numObs := len(s.Observers)
 	if len(s.X) != 0 && len(s.X) != numObs {
 		panic("length of X not equal to length of Observers")
@@ -94,7 +94,7 @@ func (s *Scatter) Update(w *ecs.World) {
 }
 
 // UpdateInputs handles input events of the previous frame update.
-func (s *Scatter) UpdateInputs(w *ecs.World, win *opengl.Window) {}
+func (s *Scatter) UpdateInputs(_ *ecs.World, _ *opengl.Window) {}
 
 // Draw the drawer.
 func (s *Scatter) Draw(w *ecs.World, win *opengl.Window) {

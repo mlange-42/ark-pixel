@@ -27,7 +27,7 @@ type Image struct {
 }
 
 // Initialize the system
-func (i *Image) Initialize(w *ecs.World, win *opengl.Window) {
+func (i *Image) Initialize(w *ecs.World, _ *opengl.Window) {
 	i.Observer.Initialize(w)
 
 	if i.Min == 0 && i.Max == 0 {
@@ -46,7 +46,7 @@ func (i *Image) Update(w *ecs.World) {
 }
 
 // UpdateInputs handles input events of the previous frame update.
-func (i *Image) UpdateInputs(w *ecs.World, win *opengl.Window) {}
+func (i *Image) UpdateInputs(_ *ecs.World, _ *opengl.Window) {}
 
 // Draw the system
 func (i *Image) Draw(w *ecs.World, win *opengl.Window) {

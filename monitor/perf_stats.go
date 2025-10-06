@@ -62,10 +62,10 @@ func (p *PerfStats) Update(w *ecs.World) {
 }
 
 // UpdateInputs handles input events of the previous frame update.
-func (p *PerfStats) UpdateInputs(w *ecs.World, win *opengl.Window) {}
+func (p *PerfStats) UpdateInputs(_ *ecs.World, _ *opengl.Window) {}
 
 // Draw the system
-func (p *PerfStats) Draw(w *ecs.World, win *opengl.Window) {
+func (p *PerfStats) Draw(_ *ecs.World, win *opengl.Window) {
 	p.summary.Clear()
 	mem, units := toMemText(p.stats.Mem)
 	fmt.Fprintf(
