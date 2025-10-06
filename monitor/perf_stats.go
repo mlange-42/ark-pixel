@@ -68,7 +68,7 @@ func (p *PerfStats) UpdateInputs(_ *ecs.World, _ *opengl.Window) {}
 func (p *PerfStats) Draw(_ *ecs.World, win *opengl.Window) {
 	p.summary.Clear()
 	mem, units := toMemText(p.stats.Mem)
-	fmt.Fprintf(
+	_, _ = fmt.Fprintf(
 		p.summary, "Tick: %7d\nEnt.: %7d\nTPS: %8.1f\nTPT: %6.2fms\nMem: %6.1f%s\nTime: %7s",
 		p.step, p.stats.Entities, p.frameTimer.FPS(),
 		float64(p.frameTimer.FrameTime().Microseconds())/1000,

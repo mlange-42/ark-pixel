@@ -112,7 +112,7 @@ func (c *Controls) drawButton(b *button, text string, win *opengl.Window) {
 	dr.Clear()
 
 	c.text.Clear()
-	fmt.Fprint(c.text, text)
+	_, _ = fmt.Fprint(c.text, text)
 
 	wTxt := c.text.Bounds().W()
 	hTxt := c.text.Bounds().H()

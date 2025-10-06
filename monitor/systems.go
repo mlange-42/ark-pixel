@@ -42,7 +42,7 @@ func (i *Systems) Initialize(w *ecs.World, _ *opengl.Window) {
 	i.text.AlignedTo(px.BottomRight)
 	i.helpText.AlignedTo(px.BottomRight)
 
-	fmt.Fprint(i.helpText, "Toggle [u]i systems, [f]ields, [t]ypes, [v]alues or [n]ames, scroll with arrows or mouse wheel.")
+	_, _ = fmt.Fprint(i.helpText, "Toggle [u]i systems, [f]ields, [t]ypes, [v]alues or [n]ames, scroll with arrows or mouse wheel.")
 }
 
 // Update the drawer.
@@ -103,7 +103,7 @@ func (i *Systems) Draw(_ *ecs.World, win *opengl.Window) {
 	y0 := height - 10.0
 
 	i.text.Clear()
-	fmt.Fprint(i.text, "Systems\n\n")
+	_, _ = fmt.Fprint(i.text, "Systems\n\n")
 
 	scroll := i.scroll
 
@@ -118,7 +118,7 @@ func (i *Systems) Draw(_ *ecs.World, win *opengl.Window) {
 		tp := val.Type()
 
 		if scroll <= 0 {
-			fmt.Fprintf(i.text, "  %s\n", tp.Name())
+			_, _ = fmt.Fprintf(i.text, "  %s\n", tp.Name())
 		}
 		scroll--
 
@@ -133,7 +133,7 @@ func (i *Systems) Draw(_ *ecs.World, win *opengl.Window) {
 				}
 			}
 			if scroll <= 0 {
-				fmt.Fprint(i.text, "\n")
+				_, _ = fmt.Fprint(i.text, "\n")
 			}
 			scroll--
 		}
@@ -144,13 +144,13 @@ func (i *Systems) Draw(_ *ecs.World, win *opengl.Window) {
 		return
 	}
 
-	fmt.Fprint(i.text, "\nUI Systems\n\n")
+	_, _ = fmt.Fprint(i.text, "\nUI Systems\n\n")
 	for _, sys := range systems.UISystems() {
 		val := reflect.ValueOf(sys).Elem()
 		tp := val.Type()
 
 		if scroll <= 0 {
-			fmt.Fprintf(i.text, "  %s\n", tp.Name())
+			_, _ = fmt.Fprintf(i.text, "  %s\n", tp.Name())
 		}
 		scroll--
 
@@ -165,7 +165,7 @@ func (i *Systems) Draw(_ *ecs.World, win *opengl.Window) {
 				}
 			}
 			if scroll <= 0 {
-				fmt.Fprint(i.text, "\n")
+				_, _ = fmt.Fprint(i.text, "\n")
 			}
 			scroll--
 		}
@@ -175,16 +175,16 @@ func (i *Systems) Draw(_ *ecs.World, win *opengl.Window) {
 }
 
 func (i *Systems) printField(w io.Writer, field reflect.StructField, value reflect.Value) {
-	fmt.Fprintf(w, "    %-20s ", field.Name)
+	_, _ = fmt.Fprintf(w, "    %-20s ", field.Name)
 	if !i.HideTypes {
-		fmt.Fprintf(w, "    %-16s ", value.Type())
+		_, _ = fmt.Fprintf(w, "    %-16s ", value.Type())
 	}
 	if !i.HideValues {
 		if i.HideNames {
-			fmt.Fprintf(w, "= %v", value.Interface())
+			_, _ = fmt.Fprintf(w, "= %v", value.Interface())
 		} else {
-			fmt.Fprintf(w, "= %+v", value.Interface())
+			_, _ = fmt.Fprintf(w, "= %+v", value.Interface())
 		}
 	}
-	fmt.Fprint(i.text, "\n")
+	_, _ = fmt.Fprint(i.text, "\n")
 }

@@ -114,11 +114,11 @@ func (m *Monitor) Initialize(_ *ecs.World, _ *opengl.Window) {
 	for i := 0; i < len(m.timeSeries.Text); i++ {
 		m.timeSeries.Text[i] = text.New(px.V(0, 0), defaultFont)
 	}
-	fmt.Fprintf(m.timeSeries.Text[tsEntities], "Entities")
-	fmt.Fprintf(m.timeSeries.Text[tsEntityCap], "Capacity")
-	fmt.Fprintf(m.timeSeries.Text[tsMemory], "Memory")
-	fmt.Fprintf(m.timeSeries.Text[tsMemoryUsed], "Memory used")
-	fmt.Fprintf(m.timeSeries.Text[tsTickPerSec], "TPS")
+	_, _ = fmt.Fprintf(m.timeSeries.Text[tsEntities], "Entities")
+	_, _ = fmt.Fprintf(m.timeSeries.Text[tsEntityCap], "Capacity")
+	_, _ = fmt.Fprintf(m.timeSeries.Text[tsMemory], "Memory")
+	_, _ = fmt.Fprintf(m.timeSeries.Text[tsMemoryUsed], "Memory used")
+	_, _ = fmt.Fprintf(m.timeSeries.Text[tsTickPerSec], "TPS")
 
 	m.text = text.New(px.V(0, 0), defaultFont).AlignedTo(px.TopRight)
 	m.text.Color = color.RGBA{200, 200, 200, 255}
@@ -161,18 +161,18 @@ func (m *Monitor) Draw(w *ecs.World, win *opengl.Window) {
 	m.summary.Clear()
 	mem, units := toMemText(stats.Memory)
 	split := width < 1080
-	fmt.Fprintf(
+	_, _ = fmt.Fprintf(
 		m.summary, "Tick: %8d  |  Ent.: %7d  |  Archetypes: %3d  |  Comp: %3d  |  Cache: %3d",
 		m.step, stats.Entities.Used, len(stats.Archetypes), len(stats.ComponentTypes), stats.CachedFilters,
 	)
 	if split {
-		fmt.Fprintf(
+		_, _ = fmt.Fprintf(
 			m.summary, "\nMem: %6.1f %s  |  TPS: %8.1f  |  TPT: %6.2f ms  |  Time: %s",
 			mem, units, m.frameTimer.FPS(),
 			float64(m.frameTimer.FrameTime().Microseconds())/1000, time.Since(m.startTime).Round(time.Second),
 		)
 	} else {
-		fmt.Fprintf(
+		_, _ = fmt.Fprintf(
 			m.summary, "  |  Mem: %6.1f %s  |  TPS: %6.1f  |  TPT: %6.2f ms  |  Time: %s",
 			mem, units, m.frameTimer.FPS(),
 			float64(m.frameTimer.FrameTime().Microseconds())/1000, time.Since(m.startTime).Round(time.Second),
@@ -236,7 +236,7 @@ func (m *Monitor) Draw(w *ecs.World, win *opengl.Window) {
 			}
 		} else {
 			m.text.Clear()
-			fmt.Fprintf(m.text, "Too many archetypes")
+			_, _ = fmt.Fprintf(m.text, "Too many archetypes")
 			m.text.Draw(win, px.IM.Moved(px.V(x0, y0-10)))
 		}
 	}
@@ -267,7 +267,7 @@ func (m *Monitor) drawArchetypeScales(win *opengl.Window, x, y, w float64, max i
 
 		val := i * int(step)
 		m.text.Clear()
-		fmt.Fprintf(m.text, "%d", val)
+		_, _ = fmt.Fprintf(m.text, "%d", val)
 		m.text.Draw(win, px.IM.Moved(px.V(math.Floor(x+xi*drawStep-m.text.Bounds().W()/2), y+10)))
 	}
 }
@@ -308,12 +308,12 @@ func (m *Monitor) drawArchetype(win *opengl.Window, x, y, w, h float64, max int,
 
 	if arch.NumRelations > 0 {
 		m.text.Clear()
-		fmt.Fprintf(m.text, "%5d / %5d", len(arch.Tables), len(arch.Tables)+arch.FreeTables)
+		_, _ = fmt.Fprintf(m.text, "%5d / %5d", len(arch.Tables), len(arch.Tables)+arch.FreeTables)
 		m.text.Draw(win, px.IM.Moved(px.V(x+5, y+3)))
 	}
 
 	m.textRight.Clear()
-	fmt.Fprintf(m.textRight, "%d", arch.Size)
+	_, _ = fmt.Fprintf(m.textRight, "%d", arch.Size)
 	m.textRight.Draw(win, px.IM.Moved(px.V(x+w-5, y+3)))
 }
 
@@ -461,7 +461,7 @@ func (a *archetypes) Update(stats *stats.World) {
 			sb.WriteString(types[j].Name())
 			sb.WriteString(" ")
 		}
-		text.WriteString(sb.String())
+		_, _ = text.WriteString(sb.String())
 		a.Components = append(a.Components, text)
 		a.Indices = append(a.Indices, i)
 	}

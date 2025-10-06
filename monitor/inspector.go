@@ -41,7 +41,7 @@ func (i *Inspector) Initialize(w *ecs.World, _ *opengl.Window) {
 	i.text.AlignedTo(px.BottomRight)
 	i.helpText.AlignedTo(px.BottomRight)
 
-	fmt.Fprint(i.helpText, "Toggle [f]ields, [t]ypes, [v]alues or [n]ames, scroll with arrows or mouse wheel.")
+	_, _ = fmt.Fprint(i.helpText, "Toggle [f]ields, [t]ypes, [v]alues or [n]ames, scroll with arrows or mouse wheel.")
 }
 
 // Update the drawer.
@@ -101,10 +101,10 @@ func (i *Inspector) Draw(w *ecs.World, win *opengl.Window) {
 	y0 := height - 10.0
 
 	i.text.Clear()
-	fmt.Fprintf(i.text, "Entity %+v\n\n", sel)
+	_, _ = fmt.Fprintf(i.text, "Entity %+v\n\n", sel)
 
 	if !w.Alive(sel) {
-		fmt.Fprint(i.text, "  dead entity")
+		_, _ = fmt.Fprint(i.text, "  dead entity")
 		i.text.Draw(win, px.IM.Moved(px.V(x0, y0)))
 		return
 	}
@@ -118,7 +118,7 @@ func (i *Inspector) Draw(w *ecs.World, win *opengl.Window) {
 		val := reflect.NewAt(tp.Type, ptr).Elem()
 
 		if scroll <= 0 {
-			fmt.Fprintf(i.text, "  %s\n", tp.Type.Name())
+			_, _ = fmt.Fprintf(i.text, "  %s\n", tp.Type.Name())
 		}
 		scroll--
 
@@ -133,7 +133,7 @@ func (i *Inspector) Draw(w *ecs.World, win *opengl.Window) {
 				}
 			}
 			if scroll <= 0 {
-				fmt.Fprint(i.text, "\n")
+				_, _ = fmt.Fprint(i.text, "\n")
 			}
 			scroll--
 		}
@@ -143,16 +143,16 @@ func (i *Inspector) Draw(w *ecs.World, win *opengl.Window) {
 }
 
 func (i *Inspector) printField(w io.Writer, field reflect.StructField, value reflect.Value) {
-	fmt.Fprintf(w, "    %-20s ", field.Name)
+	_, _ = fmt.Fprintf(w, "    %-20s ", field.Name)
 	if !i.HideTypes {
-		fmt.Fprintf(w, "    %-16s ", value.Type())
+		_, _ = fmt.Fprintf(w, "    %-16s ", value.Type())
 	}
 	if !i.HideValues {
 		if i.HideNames {
-			fmt.Fprintf(w, "= %v", value.Interface())
+			_, _ = fmt.Fprintf(w, "= %v", value.Interface())
 		} else {
-			fmt.Fprintf(w, "= %+v", value.Interface())
+			_, _ = fmt.Fprintf(w, "= %+v", value.Interface())
 		}
 	}
-	fmt.Fprint(i.text, "\n")
+	_, _ = fmt.Fprint(i.text, "\n")
 }
