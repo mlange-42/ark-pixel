@@ -69,7 +69,7 @@ func (o *FieldObserver) Layers() int {
 
 func (o *FieldObserver) Values(w *ecs.World) [][]float64 {
 	ln := len(o.values[0])
-	for idx := 0; idx < ln; idx++ {
+	for idx := range ln {
 		i := idx % o.cols
 		j := idx / o.cols
 		o.values[0][idx] = math.Sin(float64(i))

@@ -16,7 +16,7 @@ func (o *TableObserver) Initialize(w *ecs.World) {
 	rows := 25
 	o.data = make([][]float64, rows)
 
-	for i := 0; i < rows; i++ {
+	for i := range rows {
 		o.data[i] = []float64{float64(i), float64(i) / float64(rows), float64(rows-i) / float64(rows), 0}
 	}
 }
@@ -40,7 +40,7 @@ func (o *TableObserverNaN) Initialize(w *ecs.World) {
 	rows := 25
 	o.data = make([][]float64, rows)
 
-	for i := 0; i < rows; i++ {
+	for i := range rows {
 		v := 1.0
 		if i < 5 || i > rows-5 {
 			v = math.NaN()

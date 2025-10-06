@@ -123,7 +123,7 @@ func (i *Systems) Draw(_ *ecs.World, win *opengl.Window) {
 		scroll--
 
 		if !i.HideFields {
-			for k := 0; k < val.NumField(); k++ {
+			for k := range val.NumField() {
 				field := tp.Field(k)
 				if field.IsExported() {
 					if scroll <= 0 {
@@ -155,7 +155,7 @@ func (i *Systems) Draw(_ *ecs.World, win *opengl.Window) {
 		scroll--
 
 		if !i.HideFields {
-			for k := 0; k < val.NumField(); k++ {
+			for k := range val.NumField() {
 				field := tp.Field(k)
 				if field.IsExported() {
 					if scroll <= 0 {

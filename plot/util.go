@@ -70,7 +70,7 @@ type paddedTicks struct {
 
 func (t paddedTicks) Ticks(min, max float64) []plot.Tick {
 	ticks := t.DefaultTicks.Ticks(min, max)
-	for i := 0; i < len(ticks); i++ {
+	for i := range ticks {
 		ticks[i].Label = fmt.Sprintf("%*s", 10, ticks[i].Label)
 	}
 	return ticks
@@ -83,7 +83,7 @@ type removeLastTicks struct {
 
 func (t removeLastTicks) Ticks(min, max float64) []plot.Tick {
 	ticks := t.DefaultTicks.Ticks(min, max)
-	for i := 0; i < len(ticks); i++ {
+	for i := range ticks {
 		tick := &ticks[i]
 		if tick.IsMinor() {
 			continue

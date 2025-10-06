@@ -53,7 +53,7 @@ func (i *Image) Draw(w *ecs.World, win *opengl.Window) {
 	values := i.Observer.Values(w)
 
 	length := len(values)
-	for j := 0; j < length; j++ {
+	for j := range length {
 		i.picture.Pix[j] = i.valueToColor(values[j])
 	}
 

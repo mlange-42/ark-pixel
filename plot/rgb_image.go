@@ -81,7 +81,7 @@ func (i *ImageRGB) Draw(w *ecs.World, win *opengl.Window) {
 	cannels := i.Observer.Values(w)
 
 	values := append([]float64{}, i.Min...)
-	for j := 0; j < i.dataLen; j++ {
+	for j := range i.dataLen {
 		for i, k := range i.Layers {
 			if k >= 0 {
 				values[i] = cannels[k][j]

@@ -47,7 +47,7 @@ func calcTicksStep(max float64, desired int) float64 {
 func calcTps(curr float64, increase bool) float64 {
 	ln := len(preferredTps)
 	if increase {
-		for i := 0; i < ln; i++ {
+		for i := range ln {
 			if preferredTps[i] > curr {
 				return preferredTps[i]
 			}

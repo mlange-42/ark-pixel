@@ -123,7 +123,7 @@ func (i *Inspector) Draw(w *ecs.World, win *opengl.Window) {
 		scroll--
 
 		if !i.HideFields {
-			for k := 0; k < val.NumField(); k++ {
+			for k := range val.NumField() {
 				field := tp.Type.Field(k)
 				if field.IsExported() {
 					if scroll <= 0 {

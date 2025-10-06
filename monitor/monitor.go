@@ -181,7 +181,7 @@ func (m *Monitor) Draw(w *ecs.World, win *opengl.Window) {
 
 	numNodes := len(m.archetypes.Components)
 	maxCapacity := 0
-	for i := 0; i < numNodes; i++ {
+	for i := range numNodes {
 		cap := stats.Archetypes[m.archetypes.Indices[i]].Capacity
 		if cap > maxCapacity {
 			maxCapacity = cap
@@ -227,7 +227,7 @@ func (m *Monitor) Draw(w *ecs.World, win *opengl.Window) {
 			m.drawArchetypeScales(
 				win, x0, y0-archHeight, archWidth, maxCapacity,
 			)
-			for i := 0; i < numNodes; i++ {
+			for i := range numNodes {
 				idx := m.archetypes.Indices[i]
 				m.drawArchetype(
 					win, x0, y0-float64(i+2)*archHeight, archWidth, archHeight,
@@ -329,7 +329,7 @@ func (m *Monitor) drawPlot(win *opengl.Window, x, y, w, h float64, series ...tim
 	for _, series := range series {
 		values := m.timeSeries.Values[series]
 		l := values.Len()
-		for i := 0; i < l; i++ {
+		for i := range l {
 			v := values.Get(i)
 			if v > yMax {
 				yMax = v
@@ -345,7 +345,7 @@ func (m *Monitor) drawPlot(win *opengl.Window, x, y, w, h float64, series ...tim
 			xStep := w / float64(numValues-1)
 			yScale := 0.95 * h / float64(yMax)
 
-			for i := 0; i < numValues-1; i++ {
+			for i := range numValues - 1 {
 				xi := float64(i)
 				x1, x2 := xi*xStep, xi*xStep+xStep
 				y1, y2 := float64(values.Get(i))*yScale, float64(values.Get(i+1))*yScale
@@ -385,7 +385,7 @@ type timeSeries struct {
 
 func newTimeSeries(cap int) timeSeries {
 	ts := timeSeries{}
-	for i := 0; i < int(tsLast); i++ {
+	for i := range int(tsLast) {
 		ts.Values[i] = newRingBuffer[int](cap)
 	}
 	return ts
@@ -450,14 +450,14 @@ func (a *archetypes) Update(stats *stats.World) {
 	a.Indices = a.Indices[:0]
 
 	numNodes := len(stats.Archetypes)
-	for i := 0; i < numNodes; i++ {
+	for i := range numNodes {
 		node := &stats.Archetypes[i]
 		text := text.New(px.V(0, 0), defaultFont)
 		text.Color = color.RGBA{200, 200, 200, 255}
 		sb := strings.Builder{}
 		sb.WriteString(fmt.Sprintf("              %4d B  ", node.MemoryPerEntity))
 		types := node.ComponentTypes
-		for j := 0; j < len(types); j++ {
+		for j := range types {
 			sb.WriteString(types[j].Name())
 			sb.WriteString(" ")
 		}
