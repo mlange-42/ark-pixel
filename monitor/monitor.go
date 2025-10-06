@@ -93,7 +93,7 @@ type Monitor struct {
 }
 
 // Initialize the system
-func (m *Monitor) Initialize(w *ecs.World, win *opengl.Window) {
+func (m *Monitor) Initialize(_ *ecs.World, _ *opengl.Window) {
 	if m.PlotCapacity <= 0 {
 		m.PlotCapacity = 300
 	}
@@ -148,7 +148,7 @@ func (m *Monitor) Update(w *ecs.World) {
 }
 
 // UpdateInputs handles input events of the previous frame update.
-func (m *Monitor) UpdateInputs(w *ecs.World, win *opengl.Window) {}
+func (m *Monitor) UpdateInputs(_ *ecs.World, _ *opengl.Window) {}
 
 // Draw the system
 func (m *Monitor) Draw(w *ecs.World, win *opengl.Window) {
@@ -225,7 +225,7 @@ func (m *Monitor) Draw(w *ecs.World, win *opengl.Window) {
 				archHeight = 20
 			}
 			m.drawArchetypeScales(
-				win, x0, y0-archHeight, archWidth, archHeight, maxCapacity,
+				win, x0, y0-archHeight, archWidth, maxCapacity,
 			)
 			for i := 0; i < numNodes; i++ {
 				idx := m.archetypes.Indices[i]
@@ -245,7 +245,7 @@ func (m *Monitor) Draw(w *ecs.World, win *opengl.Window) {
 	dr.Clear()
 }
 
-func (m *Monitor) drawArchetypeScales(win *opengl.Window, x, y, w, h float64, max int) {
+func (m *Monitor) drawArchetypeScales(win *opengl.Window, x, y, w float64, max int) {
 	dr := &m.drawer
 	step := calcTicksStep(float64(max), 8)
 	if step < 1 {

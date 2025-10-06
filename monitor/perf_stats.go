@@ -27,7 +27,7 @@ type PerfStats struct {
 }
 
 // Initialize the system
-func (p *PerfStats) Initialize(w *ecs.World, win *opengl.Window) {
+func (p *PerfStats) Initialize(w *ecs.World, _ *opengl.Window) {
 	if p.SampleInterval <= 0 {
 		p.SampleInterval = time.Second
 	}

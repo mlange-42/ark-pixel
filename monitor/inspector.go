@@ -32,7 +32,7 @@ type Inspector struct {
 }
 
 // Initialize the system
-func (i *Inspector) Initialize(w *ecs.World, win *opengl.Window) {
+func (i *Inspector) Initialize(w *ecs.World, _ *opengl.Window) {
 	i.selectedRes = ecs.NewResource[resource.SelectedEntity](w)
 
 	i.text = text.New(px.V(0, 0), defaultFont)
@@ -45,10 +45,10 @@ func (i *Inspector) Initialize(w *ecs.World, win *opengl.Window) {
 }
 
 // Update the drawer.
-func (i *Inspector) Update(w *ecs.World) {}
+func (i *Inspector) Update(_ *ecs.World) {}
 
 // UpdateInputs handles input events of the previous frame update.
-func (i *Inspector) UpdateInputs(w *ecs.World, win *opengl.Window) {
+func (i *Inspector) UpdateInputs(_ *ecs.World, win *opengl.Window) {
 	if win.JustPressed(px.KeyF) {
 		i.HideFields = !i.HideFields
 		return
@@ -127,7 +127,7 @@ func (i *Inspector) Draw(w *ecs.World, win *opengl.Window) {
 				field := tp.Type.Field(k)
 				if field.IsExported() {
 					if scroll <= 0 {
-						i.printField(i.text, tp.Type, field, val.Field(k))
+						i.printField(i.text, field, val.Field(k))
 					}
 					scroll--
 				}
@@ -142,7 +142,7 @@ func (i *Inspector) Draw(w *ecs.World, win *opengl.Window) {
 	i.text.Draw(win, px.IM.Moved(px.V(x0, y0)))
 }
 
-func (i *Inspector) printField(w io.Writer, tp reflect.Type, field reflect.StructField, value reflect.Value) {
+func (i *Inspector) printField(w io.Writer, field reflect.StructField, value reflect.Value) {
 	fmt.Fprintf(w, "    %-20s ", field.Name)
 	if !i.HideTypes {
 		fmt.Fprintf(w, "    %-16s ", value.Type())

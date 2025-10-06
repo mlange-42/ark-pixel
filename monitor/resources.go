@@ -29,7 +29,7 @@ type Resources struct {
 }
 
 // Initialize the system
-func (i *Resources) Initialize(_ *ecs.World, win *opengl.Window) {
+func (i *Resources) Initialize(_ *ecs.World, _ *opengl.Window) {
 	i.text = text.New(px.V(0, 0), defaultFont)
 	i.helpText = text.New(px.V(0, 0), defaultFont)
 

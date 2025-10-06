@@ -28,7 +28,7 @@ type Controls struct {
 }
 
 // Initialize the system
-func (c *Controls) Initialize(w *ecs.World, win *opengl.Window) {
+func (c *Controls) Initialize(w *ecs.World, _ *opengl.Window) {
 	c.systemsRes = ecs.NewResource[app.Systems](w)
 	if !c.systemsRes.Has() {
 		panic("resource of type Systems expected in Controls drawer")
@@ -44,10 +44,10 @@ func (c *Controls) Initialize(w *ecs.World, win *opengl.Window) {
 }
 
 // Update the drawer.
-func (c *Controls) Update(w *ecs.World) {}
+func (c *Controls) Update(_ *ecs.World) {}
 
 // UpdateInputs handles input events of the previous frame update.
-func (c *Controls) UpdateInputs(w *ecs.World, win *opengl.Window) {
+func (c *Controls) UpdateInputs(_ *ecs.World, win *opengl.Window) {
 	sys := c.systemsRes.Get()
 	if win.JustPressed(px.KeySpace) {
 		sys.Paused = !sys.Paused
@@ -64,34 +64,34 @@ func (c *Controls) UpdateInputs(w *ecs.World, win *opengl.Window) {
 
 	if win.JustPressed(px.MouseButton1) {
 		width := win.Canvas().Bounds().W()
-		height := win.Canvas().Bounds().H()
+		//height := win.Canvas().Bounds().H()
 
 		mouse := win.MousePosition()
-		if c.pauseBounds(width, height).Contains(mouse.X, mouse.Y) {
+		if c.pauseBounds(width).Contains(mouse.X, mouse.Y) {
 			sys.Paused = !sys.Paused
-		} else if c.upButton(width, height).Contains(mouse.X, mouse.Y) {
+		} else if c.upButton(width).Contains(mouse.X, mouse.Y) {
 			sys.TPS = calcTps(sys.TPS, true)
-		} else if c.downButton(width, height).Contains(mouse.X, mouse.Y) {
+		} else if c.downButton(width).Contains(mouse.X, mouse.Y) {
 			sys.TPS = calcTps(sys.TPS, false)
 		}
 	}
 }
 
 // Draw the system
-func (c *Controls) Draw(w *ecs.World, win *opengl.Window) {
+func (c *Controls) Draw(_ *ecs.World, win *opengl.Window) {
 	width := win.Canvas().Bounds().W()
-	height := win.Canvas().Bounds().H()
+	//height := win.Canvas().Bounds().H()
 
 	sys := c.systemsRes.Get()
 	text := "Pause"
 	if sys.Paused {
 		text = "Resume"
 	}
-	c.drawButton(c.pauseBounds(width, height), text, win)
+	c.drawButton(c.pauseBounds(width), text, win)
 
-	c.drawButton(c.upButton(width, height), "+", win)
-	c.drawButton(c.downButton(width, height), "-", win)
-	c.drawButton(c.tpsButton(width, height), fmt.Sprintf("%.0f TPS", sys.TPS), win)
+	c.drawButton(c.upButton(width), "+", win)
+	c.drawButton(c.downButton(width), "-", win)
+	c.drawButton(c.tpsButton(width), fmt.Sprintf("%.0f TPS", sys.TPS), win)
 }
 
 func (c *Controls) drawButton(b *button, text string, win *opengl.Window) {
@@ -119,7 +119,7 @@ func (c *Controls) drawButton(b *button, text string, win *opengl.Window) {
 	c.text.Draw(win, px.IM.Scaled(px.V(wTxt/2, hTxt/2), c.Scale).Moved(px.V(math.Floor(cx-wTxt/2), math.Floor(cy-hTxt/2))))
 }
 
-func (c *Controls) pauseBounds(w, h float64) *button {
+func (c *Controls) pauseBounds(w float64) *button {
 	return &button{
 		w - 85*c.Scale,
 		5 + 15*c.Scale,
@@ -128,7 +128,7 @@ func (c *Controls) pauseBounds(w, h float64) *button {
 	}
 }
 
-func (c *Controls) upButton(w, h float64) *button {
+func (c *Controls) upButton(w float64) *button {
 	return &button{
 		w - 25*c.Scale,
 		5 + 30*c.Scale,
@@ -137,7 +137,7 @@ func (c *Controls) upButton(w, h float64) *button {
 	}
 }
 
-func (c *Controls) downButton(w, h float64) *button {
+func (c *Controls) downButton(w float64) *button {
 	return &button{
 		w - 25*c.Scale,
 		5 + 15*c.Scale,
@@ -146,7 +146,7 @@ func (c *Controls) downButton(w, h float64) *button {
 	}
 }
 
-func (c *Controls) tpsButton(w, h float64) *button {
+func (c *Controls) tpsButton(w float64) *button {
 	return &button{
 		w - 85*c.Scale,
 		5,
