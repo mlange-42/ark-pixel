@@ -67,11 +67,12 @@ func (c *Controls) UpdateInputs(_ *ecs.World, win *opengl.Window) {
 		//height := win.Canvas().Bounds().H()
 
 		mouse := win.MousePosition()
-		if c.pauseBounds(width).Contains(mouse.X, mouse.Y) {
+		switch {
+		case c.pauseBounds(width).Contains(mouse.X, mouse.Y):
 			sys.Paused = !sys.Paused
-		} else if c.upButton(width).Contains(mouse.X, mouse.Y) {
+		case c.upButton(width).Contains(mouse.X, mouse.Y):
 			sys.TPS = calcTps(sys.TPS, true)
-		} else if c.downButton(width).Contains(mouse.X, mouse.Y) {
+		case c.downButton(width).Contains(mouse.X, mouse.Y):
 			sys.TPS = calcTps(sys.TPS, false)
 		}
 	}
