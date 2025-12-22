@@ -40,8 +40,8 @@ func ExampleResources() {
 func TestResources(t *testing.T) {
 	app := app.New()
 
-	_ = ecs.AddResource[Position](&app.World, &Position{})
-	_ = ecs.ResourceID[Velocity](&app.World)
+	_ = ecs.AddResource[Position](app.World, &Position{})
+	_ = ecs.ResourceID[Velocity](app.World)
 
 	app.TPS = 30
 

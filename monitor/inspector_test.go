@@ -19,12 +19,12 @@ func ExampleInspector() {
 	app.TPS = 30
 
 	// Create an entity to inspect it.
-	posID := ecs.ComponentID[Position](&app.World)
-	velID := ecs.ComponentID[Velocity](&app.World)
+	posID := ecs.ComponentID[Position](app.World)
+	velID := ecs.ComponentID[Velocity](app.World)
 	entity := app.World.Unsafe().NewEntity(posID, velID)
 
 	// Set it as selected entity.
-	ecs.AddResource(&app.World, &resource.SelectedEntity{Selected: entity})
+	ecs.AddResource(app.World, &resource.SelectedEntity{Selected: entity})
 
 	// Create a window with an Inspector drawer.
 	app.AddUISystem((&window.Window{}).
@@ -50,11 +50,11 @@ func TestInspector(t *testing.T) {
 	app := app.New()
 	app.TPS = 300
 
-	posID := ecs.ComponentID[Position](&app.World)
-	velID := ecs.ComponentID[Velocity](&app.World)
+	posID := ecs.ComponentID[Position](app.World)
+	velID := ecs.ComponentID[Velocity](app.World)
 	entity := app.World.Unsafe().NewEntity(posID, velID)
 
-	ecs.AddResource(&app.World, &resource.SelectedEntity{Selected: entity})
+	ecs.AddResource(app.World, &resource.SelectedEntity{Selected: entity})
 
 	app.AddUISystem((&window.Window{}).
 		With(&monitor.Inspector{
@@ -72,11 +72,11 @@ func TestInspector_DeadEntity(t *testing.T) {
 	app := app.New()
 	app.TPS = 300
 
-	posID := ecs.ComponentID[Position](&app.World)
-	velID := ecs.ComponentID[Velocity](&app.World)
+	posID := ecs.ComponentID[Position](app.World)
+	velID := ecs.ComponentID[Velocity](app.World)
 	entity := app.World.Unsafe().NewEntity(posID, velID)
 
-	ecs.AddResource(&app.World, &resource.SelectedEntity{Selected: entity})
+	ecs.AddResource(app.World, &resource.SelectedEntity{Selected: entity})
 
 	app.AddUISystem((&window.Window{}).
 		With(&monitor.Inspector{
