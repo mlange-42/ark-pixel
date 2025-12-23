@@ -1,5 +1,11 @@
 # Changelog
 
+## [[v0.1.5]](https://github.com/mlange-42/ark-pixel/compare/v0.1.4...v0.1.5)
+
+### Other
+
+- Upgrades to Ark v0.7.0 and Ark-Tools v0.3.0 (#22)
+
 ## [[v0.1.4]](https://github.com/mlange-42/ark-pixel/compare/v0.1.3...v0.1.4)
 
 ### Other
