@@ -40,10 +40,10 @@ github.com/mazznoer/colorgrad v0.10.0 h1:p2ImJimPGEUFhMrNx4EGSzkr2XARomIo1yyUgso
 github.com/mazznoer/colorgrad v0.10.0/go.mod h1:1dkoC2jE1oMVr11umiBHfyHV/W+E+By2WJaPKJJ6Nkk=
 github.com/mazznoer/csscolorparser v0.1.5 h1:Wr4uNIE+pHWN3TqZn2SGpA2nLRG064gB7WdSfSS5cz4=
 github.com/mazznoer/csscolorparser v0.1.5/go.mod h1:OQRVvgCyHDCAquR1YWfSwwaDcM0LhnSffGnlbOew/3I=
-github.com/mlange-42/ark v0.7.0 h1:cLEqhJhZaZayi35eY/cE7VQg7GonK+s1qbsSKdtcjrs=
-github.com/mlange-42/ark v0.7.0/go.mod h1:gkS9cuklENPTmSjL2z4DcJgJsIVqF1yNwFlx48Hz/Sw=
-github.com/mlange-42/ark-tools v0.3.0 h1:QWupkug7bPjmUCoogxg61LehCKG9nrZP1YNZ6iUzfdA=
-github.com/mlange-42/ark-tools v0.3.0/go.mod h1:oXyDdfltgQJeh4x8y7svy8LSkSEUXvZ3XINByntQn54=
+github.com/mlange-42/ark v0.8.0 h1:8VzpLNTrcYcYZolcaZ/NHHv9fWdgbI98v86CenHILwA=
+github.com/mlange-42/ark v0.8.0/go.mod h1:gkS9cuklENPTmSjL2z4DcJgJsIVqF1yNwFlx48Hz/Sw=
+github.com/mlange-42/ark-tools v0.3.1 h1:D86BBrbaHsM6yMTfEvm/VH2dDCntuu4f3GW82q9pU2M=
+github.com/mlange-42/ark-tools v0.3.1/go.mod h1:ukUgVqzix8pFDuX1LXaP76rtAJOpkSgsWmr2hzq9YgA=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
