@@ -455,7 +455,7 @@ func (a *archetypes) Update(stats *stats.World) {
 		text := text.New(px.V(0, 0), defaultFont)
 		text.Color = color.RGBA{200, 200, 200, 255}
 		sb := strings.Builder{}
-		sb.WriteString(fmt.Sprintf("              %4d B  ", node.MemoryPerEntity))
+		fmt.Fprintf(&sb, "              %4d B  ", node.MemoryPerEntity)
 		types := node.ComponentTypes
 		for j := range types {
 			sb.WriteString(types[j].Name())
