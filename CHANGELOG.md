@@ -1,5 +1,11 @@
 # Changelog
 
+## [[v0.1.6]](https://github.com/mlange-42/ark-pixel/compare/v0.1.5...v0.1.6)
+
+### Other
+
+- Upgrades to Ark v0.8.0 (#23)
+
 ## [[v0.1.5]](https://github.com/mlange-42/ark-pixel/compare/v0.1.4...v0.1.5)
 
 ### Other
