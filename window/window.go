@@ -34,15 +34,21 @@ type Drawer interface {
 
 // Bounds define a bounding box for a window.
 type Bounds struct {
-	X int // X position
-	Y int // Y position
-	W int // Width
-	H int // Height
+	X       int  // X position
+	Y       int  // Y position
+	W       int  // Width
+	H       int  // Height
+	Percent bool // Use relative bounds in window percentages
 }
 
-// B creates a new Bounds object.
+// B creates a new Bounds object with absolute pixel values.
 func B(x, y, w, h int) Bounds {
-	return Bounds{x, y, w, h}
+	return Bounds{x, y, w, h, false}
+}
+
+// BPerc creates a new Bounds object with relative screen size percentage values.
+func BPerc(x, y, w, h int) Bounds {
+	return Bounds{x, y, w, h, true}
 }
 
 // Window provides an OpenGL window for drawing.
@@ -74,18 +80,35 @@ func (w *Window) Initialize(_ *ecs.World) {}
 // InitializeUI the window system.
 func (w *Window) InitializeUI(world *ecs.World) {
 	if w.Bounds.W <= 0 {
-		w.Bounds.W = 1024
+		if w.Bounds.Percent {
+			w.Bounds.W = 50
+		} else {
+			w.Bounds.W = 1024
+		}
 	}
 	if w.Bounds.H <= 0 {
-		w.Bounds.H = 768
+		if w.Bounds.Percent {
+			w.Bounds.H = 50
+		} else {
+			w.Bounds.H = 768
+		}
 	}
 	if w.Title == "" {
 		w.Title = "Ark"
 	}
+
+	x, y := float64(w.Bounds.X), float64(w.Bounds.Y)
+	wd, ht := float64(w.Bounds.W), float64(w.Bounds.H)
+	if w.Bounds.Percent {
+		m := opengl.PrimaryMonitor()
+		mw, mh := m.Size()
+		x, y = x*mw/100, y*mh/100
+		wd, ht = wd*mw/100, ht*mh/100
+	}
 	cfg := opengl.WindowConfig{
 		Title:     w.Title,
-		Bounds:    pixel.R(0, 0, float64(w.Bounds.W), float64(w.Bounds.H)),
-		Position:  pixel.V(float64(w.Bounds.X), float64(w.Bounds.Y)),
+		Bounds:    pixel.R(0, 0, wd, ht),
+		Position:  pixel.V(x, y),
 		Resizable: true,
 	}
 
