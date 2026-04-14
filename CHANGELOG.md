@@ -1,5 +1,11 @@
 # Changelog
 
+## [[v0.2.0]](https://github.com/mlange-42/ark-pixel/compare/v0.1.6...v0.2.0)
+
+### Features
+
+- Adds `Bounds` constructor `BPerc` for relative window placement (#25)
+
 ## [[v0.1.6]](https://github.com/mlange-42/ark-pixel/compare/v0.1.5...v0.1.6)
 
 ### Other
